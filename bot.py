@@ -27,10 +27,6 @@ class TwitterAPI:
 if __name__ == "__main__":
     twitter = TwitterAPI()
     #twitter.tweet("Hello world!") #You probably want to remove this line
-    #public_tweets = twitter.home_timeline()
-    while True:
-    	twitter.tweet("Hello world!")
-	sleep(60)
-    
-
-        time.sleep(60)
+    public_tweets = twitter.home_timeline()
+    for tweet in public_tweets:
+        print tweet
