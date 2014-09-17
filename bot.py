@@ -26,7 +26,9 @@ class TwitterAPI:
 
 if __name__ == "__main__":
     twitter = TwitterAPI()
-    twitter.tweet("Hello world!") #You probably want to remove this line
-    while True:
-        #Send a tweet here!
+    #twitter.tweet("Hello world!") #You probably want to remove this line
+    public_tweets = twitter.home_timeline()
+    twitter.tweet("Hello world!")
+    return str(public_tweets)
+
         time.sleep(60)
