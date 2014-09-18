@@ -74,6 +74,6 @@ def index():
     for k, v in sorted(wordcount_diff.items(), key=lambda x:x[1]):
         ret_str += k + ":" + v + "***"
 '''
-    return wordcount
+    return "test"
 
 bottle.run(host='0.0.0.0', port=argv[1])
