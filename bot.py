@@ -1,7 +1,12 @@
 import os
 import time
+
+import sys
 from sys import argv
-from bottle import route, run, template
+
+import bottle
+from bottle import default_app, request, route, response, get
+
 
 import tweepy
 
