@@ -40,7 +40,7 @@ def index():
     public_tweets = twitter.home_timeline()
     ret = ""
     for tweet in public_tweets:
-        ret += str(tweet.text)
+        ret += str(tweet['text'])
     return ret
 #     return "test"
 
