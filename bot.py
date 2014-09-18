@@ -38,7 +38,6 @@ def index():
     twitter = TwitterAPI().api
     #twitter.tweet("Hello world!") #You probably want to remove this line
     public_tweets = twitter.home_timeline(count=200, page=1)
-    ret = ""
     wordcount = {}
     for tweet in public_tweets:
         ret = str(tweet.text.encode('ascii', 'ignore'))
@@ -49,7 +48,32 @@ def index():
 	    else:
 	        wordcount[word] = 1
 
-    return wordcount
+    public_tweets_old = twitter.home_timeline(count=200, page=2)
+    wordcount_old = {}
+    for tweet in public_tweets_old:
+        ret = str(tweet.text.encode('ascii', 'ignore'))
+	words = ret.lower().split()
+	for word in words:
+	    if word in wordcount_old:
+	        wordcount_old[word] += 1
+	    else:
+	        wordcount_old[word] = 1
+
+    wordcount_diff = {}
+    for k, v in wordcount:
+        found = False
+        for k_old, v_old in wordcount_old:
+	    if k == v:
+	        diff = abs(v - v_old)
+		wordcount_diff[k] = diff
+		found = True
+	if not found:
+	    wordcount_diff[k] = v
+
+    ret_str = ""
+    for k, v in sorted(wordcount_diff.items(), key=lambda x:x[1]):
+        ret_str += k + ":" + v + "***"
+    return ret_str
 #     return "test"
 
 bottle.run(host='0.0.0.0', port=argv[1])
