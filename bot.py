@@ -41,7 +41,8 @@ def index():
     ret = ""
     for tweet in public_tweets:
         ret += str(tweet.text)
-    return ret
+	print ret
+    return "test"
 #     return "test"
 
 bottle.run(host='0.0.0.0', port=argv[1])
