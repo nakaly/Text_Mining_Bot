@@ -1,6 +1,8 @@
 import os
 import time
-import bottle from route, run
+
+from bottle import route, run, template
+
 import tweepy
 
 class TwitterAPI:
@@ -26,7 +28,7 @@ class TwitterAPI:
 
 #if __name__ == "__main__":
 
-@route("/")
+@route('/')
 def index():
     twitter = TwitterAPI().api
     #twitter.tweet("Hello world!") #You probably want to remove this line
