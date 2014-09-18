@@ -75,8 +75,10 @@ def index():
         if not found:
             wordcount_diff[k] = v
 
+    ret_str = ""
+    for k, v in sorted(wordcount_diff.iteritems(), key=lambda x:x[1]):
+        ret_str += k + ":" + v + "###"
 
-
-    return wordcount_diff
+    return ret_str
 
 bottle.run(host='0.0.0.0', port=argv[1])
