@@ -49,18 +49,6 @@ def index():
 	    else:
 	        wordcount[word] = 1
 
-    public_tweets_old = twitter.home_timeline(count=200, page=2)
-    wordcount_old = {}
-    words_old = []
-    for tweet in public_tweets_old:
-        ret = str(tweet.text.encode('ascii', 'ignore'))
-        words_old = ret.lower().split()
-    for word in words_old:
-        if word in wordcount_old:
-            wordcount_old[word] += 1
-        else:
-            wordcount_old[word] = 1
-
 
     return wordcount
 
