@@ -1,6 +1,9 @@
 import os
 import time
 
+import itemgetter
+from operator import itemgetter
+`
 import sys
 from sys import argv
 
@@ -76,7 +79,7 @@ def index():
             wordcount_diff[k] = v
 
     ret_str = ""
-    for k, v in sorted(wordcount_diff.iteritems(), key=lambda x:x[1]):
+    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1)):
         temp = k + ":" + str(v) + "###"
         ret_str += temp
 
