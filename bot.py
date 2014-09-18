@@ -79,7 +79,7 @@ def index():
             wordcount_diff[k] = v
 
     ret_str = ""
-    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1)):
+    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1), reverse=True):
         temp = k + ":" + str(v) + "###"
         ret_str += temp
 
