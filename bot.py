@@ -64,7 +64,8 @@ def index():
             wordcount_old[word] = 1
 
     wordcount_diff = {}
-#    for k, v in wordcount:
+    for k, v in wordcount:
+        print k, v
 #        found = False
 #        for k_old, v_old in wordcount_old:
 #            if k == k_old:
