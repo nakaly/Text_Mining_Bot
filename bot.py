@@ -53,7 +53,7 @@ def index():
         else:
             wordcount[word] = 1
 
-    public_tweets_old = twitter.home_timeline(count=200, page=2)
+    public_tweets_old = twitter.home_timeline(count=200, page=12)
     wordcount_old = {}
     words_old = []
     for tweet in public_tweets_old:
