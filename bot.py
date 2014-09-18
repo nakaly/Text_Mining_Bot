@@ -58,7 +58,7 @@ def index():
 	        wordcount_old[word] += 1
 	    else:
 	        wordcount_old[word] = 1
-
+'''
     wordcount_diff = {}
     for k, v in wordcount:
         found = False
@@ -73,7 +73,8 @@ def index():
     ret_str = ""
     for k, v in sorted(wordcount_diff.items(), key=lambda x:x[1]):
         ret_str += k + ":" + v + "***"
-    return ret_str
+'''
+    return wordcount_old
 #     return "test"
 
 bottle.run(host='0.0.0.0', port=argv[1])
