@@ -37,7 +37,7 @@ class TwitterAPI:
 def index():
     twitter = TwitterAPI().api
     #twitter.tweet("Hello world!") #You probably want to remove this line
-    public_tweets = twitter.home_timeline()
+    public_tweets = twitter.home_timeline(count=200, page=1)
     ret = ""
     wordcount = {}
     for tweet in public_tweets:
