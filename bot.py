@@ -39,9 +39,17 @@ def index():
     #twitter.tweet("Hello world!") #You probably want to remove this line
     public_tweets = twitter.home_timeline()
     ret = ""
+    wordcount = {}
     for tweet in public_tweets:
-        ret += tweet.text.encode('ascii', 'ignore')
-    return ret
+        ret = tweet.text.encode('ascii', 'ignore')
+	words = ret.lower.split()
+	for word in words:
+	    if word in wordcount:
+	        wordcount[word] += 1
+	    else:
+	        wordcount[word] = 1
+
+    return wordcount
 #     return "test"
 
 bottle.run(host='0.0.0.0', port=argv[1])
