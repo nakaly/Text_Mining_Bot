@@ -38,6 +38,7 @@ def index():
     twitter = TwitterAPI().api
     #twitter.tweet("Hello world!") #You probably want to remove this line
     public_tweets = twitter.home_timeline()
+    ret = ""
     for tweet in public_tweets:
         ret += str(tweet)
     return ret
