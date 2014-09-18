@@ -42,7 +42,7 @@ def index():
     words = []
     for tweet in public_tweets:
         ret = str(tweet.text.encode('ascii', 'ignore'))
-	    words.append(ret.lower().split())
+	    words.extend(ret.lower().split())
 	for word in words:
 	    if word in wordcount:
 	        wordcount[word] += 1
