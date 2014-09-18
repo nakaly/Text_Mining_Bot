@@ -29,4 +29,4 @@ if __name__ == "__main__":
     #twitter.tweet("Hello world!") #You probably want to remove this line
     public_tweets = twitter.home_timeline()
     for tweet in public_tweets:
-        print tweet
+        print(tweet)
