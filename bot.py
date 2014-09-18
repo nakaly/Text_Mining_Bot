@@ -30,11 +30,12 @@ class TwitterAPI:
 
 @route('/')
 def index():
-    twitter = TwitterAPI().api
-    #twitter.tweet("Hello world!") #You probably want to remove this line
-    public_tweets = twitter.home_timeline()
-    for tweet in public_tweets:
-        ret += str(tweet)
-    return ret
+#    twitter = TwitterAPI().api
+#    #twitter.tweet("Hello world!") #You probably want to remove this line
+#    public_tweets = twitter.home_timeline()
+#    for tweet in public_tweets:
+#        ret += str(tweet)
+#    return ret
+     return "test"
 
 bottle.run(host='0.0.0.0', port=argv[1])
