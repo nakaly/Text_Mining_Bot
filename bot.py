@@ -63,6 +63,19 @@ def index():
         else:
             wordcount_old[word] = 1
 
+    wordcount_diff = {}
+    for k, v in wordcount:
+        found = False
+        for k_old, v_old in wordcount_old:
+            if k == k_old:
+                diff = abs(v - v_old)
+                wordcount_diff[k] = diff
+                found = True
+        if not found:
+            wordcount_diff[k] = v
+
+
+
     return wordcount_old
 
 bottle.run(host='0.0.0.0', port=argv[1])
