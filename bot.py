@@ -77,7 +77,8 @@ def index():
 
     ret_str = ""
     for k, v in sorted(wordcount_diff.iteritems(), key=lambda x:x[1]):
-        ret_str += k + ":" + v + "###"
+        temp = k + ":" + str(v) + "###"
+        ret_str += temp
 
     return ret_str
 
