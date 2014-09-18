@@ -40,9 +40,8 @@ def index():
     public_tweets = twitter.home_timeline()
     ret = ""
     for tweet in public_tweets:
-        #ret += str(tweet.text)
-	print ret
-    return "test"
+        ret += tweet.text.encode('ascii', 'ignore')
+    return ret
 #     return "test"
 
 bottle.run(host='0.0.0.0', port=argv[1])
