@@ -1,6 +1,6 @@
 import os
 import time
-
+import bottle from route, run
 import tweepy
 
 class TwitterAPI:
@@ -24,9 +24,15 @@ class TwitterAPI:
         """Send a tweet"""
         self.api.update_status(message)
 
-if __name__ == "__main__":
+#if __name__ == "__main__":
+
+@route("/")
+def index():
     twitter = TwitterAPI().api
     #twitter.tweet("Hello world!") #You probably want to remove this line
     public_tweets = twitter.home_timeline()
     for tweet in public_tweets:
-        print tweet
+        ret += str(tweet)
+    return ret
+
+bottle.run(host='0.0.0.0', port=argv[1])
