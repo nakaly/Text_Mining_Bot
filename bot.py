@@ -77,6 +77,6 @@ def index():
 
 
 
-    return wordcount_old
+    return wordcount_diff
 
 bottle.run(host='0.0.0.0', port=argv[1])
