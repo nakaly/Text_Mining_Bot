@@ -41,7 +41,6 @@ def index():
     ret = ""
     for tweet in public_tweets:
         ret += tweet.text.encode('ascii', 'ignore')
-	ret += '\r\n'
     return ret
 #     return "test"
 
