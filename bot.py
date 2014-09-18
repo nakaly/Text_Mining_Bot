@@ -22,11 +22,11 @@ class TwitterAPI:
     with init.sh included with the heroku-twitterbot-starter
     """
     def __init__(self):
-        consumer_key = "zrkudNdWxMBZUWSlLeTn9uwoZ"
-        consumer_secret = "kMMSckasyrKmtV55uhNziLXHzMVcfblNGA2PbcRla30uW4C1GF"
+        consumer_key = ""
+        consumer_secret = ""
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        access_token = "2814523249-fqhwgB3fhfagLgYHqEM8WkvJ2ol9bSoYDUPlV4j"
-        access_token_secret = "AwbHGdztNDm5nsX3kepQXSIJb96EpMZYcB5waBO7EbVCi"
+        access_token = ""
+        access_token_secret = ""
         auth.set_access_token(access_token, access_token_secret)
         self.api = tweepy.API(auth)
 
