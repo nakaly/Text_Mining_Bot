@@ -1,7 +1,7 @@
 import os
 import time
 
-import itemgetter
+import operator
 from operator import itemgetter
 `
 import sys
