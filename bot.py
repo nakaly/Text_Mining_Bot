@@ -78,6 +78,9 @@ def preparation_freq_words():
                 found = True
         if not found:
             wordcount_diff[k] = v
+    redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
+    redis = redis.from_url(redis_url)
+
     for k, v in wordcount_diff:
     	redis.zadd("freq_word", k, v)
 #    ret_str = ""
@@ -89,6 +92,8 @@ def preparation_freq_words():
 @get('/info/freq_words')
 def freq_words():
 	response.content_type = 'application/json'
+    redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
+    redis = redis.from_url(redis_url)
 	freq_words = redis.zrange("freg_word", 0, -1, withscores=True)
 	dict_freq_words = dict(zip(freq_words))
 	return dict_freq_words
