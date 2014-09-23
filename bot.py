@@ -96,7 +96,7 @@ def freq_words():
 	redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 	redis_db = redis.from_url(redis_url)
 	freq_words = redis_db.zrange("freq_word", 0, -1, withscores=True)
-	dict_freq_words = dict(zip(freq_words))
+	dict_freq_words = dict(freq_words)
 	return dict_freq_words
 
 @route('/static/<filename>')
