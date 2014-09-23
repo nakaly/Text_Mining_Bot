@@ -8,7 +8,7 @@ import sys
 from sys import argv
 
 import bottle
-from bottle import default_app, request, route, response, get
+from bottle import default_app, request, route, response, get, static_file
 
 
 import tweepy
@@ -36,8 +36,8 @@ class TwitterAPI:
 
 #if __name__ == "__main__":
 
-@route('/')
-def index():
+@get('/info/freq_words')
+def freq_words():
     twitter = TwitterAPI().api
     #twitter.tweet("Hello world!") #You probably want to remove this line
     public_tweets = twitter.home_timeline(count=200, page=1)
@@ -84,5 +84,9 @@ def index():
         ret_str += temp
 
     return ret_str
+
+@route('/')
+def index():
+    return static_file(index.html, root='./static/') 
 
 bottle.run(host='0.0.0.0', port=argv[1])
