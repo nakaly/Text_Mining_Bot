@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex,follow" />
+<title>jQuery Bottom Demo</title>
+<style>
+body {
+    margin: 20px;
+}
+#image {
+    margin: 20px 0 0 10px;
+}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.bottom-1.0.js"></script>
+<script type="text/javascript">
+var dummy = 'Test';
+var number = 51;
+$(function() {
+    $(window).bottom({proximity: 0.05});
+    $(window).on('bottom', function() {
+        var obj = $(this);
+        if (!obj.data('loading')) {
+            obj.data('loading', true);
+            $('#image').html('<div>'+'loading...'+'</div>');
+            setTimeout(function() {
+                $('#image').html('');
+                for (i=0; i<20; i++, number++) {
+                    $('#wrap div:last').append('<div>'+dummy+number+'</div>');
+                }
+                obj.data('loading', false);
+            }, 3000);
+        }
+    });
+    $('html,body').animate({ scrollTop: 0 }, '1');
+});
+</script>
+<h1>jQuery Bottom Plugin Demo</h1>
+<p>New entries will be added when you scroll to the bottom</p>
+<div id="wrap">
+    <div>Test1</div>
+    <div>Test2</div>
+    <div>Test3</div>
+    <div>Test4</div>
+    <div>Test5</div>
+    <div>Test6</div>
+    <div>Test7</div>
+    <div>Test8</div>
+    <div>Test9</div>
+    <div>Test0</div>
+    <div>Test11</div>
+    <div>Test12</div>
+    <div>Test13</div>
+    <div>Test14</div>
+    <div>Test15</div>
+    <div>Test16</div>
+    <div>Test17</div>
+    <div>Test18</div>
+    <div>Test19</div>
+    <div>Test20</div>
+    <div>Test21</div>
+    <div>Test22</div>
+    <div>Test23</div>
+    <div>Test24</div>
+    <div>Test25</div>
+    <div>Test26</div>
+    <div>Test27</div>
+    <div>Test28</div>
+    <div>Test29</div>
+    <div>Test30</div>
+    <div>Test31</div>
+    <div>Test32</div>
+    <div>Test33</div>
+    <div>Test34</div>
+    <div>Test35</div>
+    <div>Test36</div>
+    <div>Test37</div>
+    <div>Test38</div>
+    <div>Test39</div>
+    <div>Test40</div>
+    <div>Test41</div>
+    <div>Test42</div>
+    <div>Test43</div>
+    <div>Test44</div>
+    <div>Test45</div>
+    <div>Test46</div>
+    <div>Test47</div>
+    <div>Test48</div>
+    <div>Test49</div>
+    <div>Test50</div>
+</div>
+<div id="image"></div>
+</body>
+</html>
