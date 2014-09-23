@@ -15,6 +15,10 @@ body {
 <script type="text/javascript">
 var dummy = 'Test';
 var number = 51;
+var req = new XMLHttpRequest();
+req.open("get", "http://text-mining-bot.herokuapp.com/info/freq_words", false)
+req.send()
+var data = eval('(' + req.responseText + ')');
 $(function() {
     $(window).bottom({proximity: 0.05});
     $(window).on('bottom', function() {
@@ -24,9 +28,12 @@ $(function() {
             $('#image').html('<div>'+'loading...'+'</div>');
             setTimeout(function() {
                 $('#image').html('');
-                for (i=0; i<20; i++, number++) {
-                    $('#wrap div:last').append('<div>'+dummy+number+'</div>');
+                for (var i in data) {
+                    $('#wrap div:last').append('<div>'+ i + data[i] +'</div>');
                 }
+//                for (i=0; i<20; i++, number++) {
+//                   $('#wrap div:last').append('<div>'+dummy+number+'</div>');
+//              }
                 obj.data('loading', false);
             }, 3000);
         }
