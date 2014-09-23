@@ -10,6 +10,7 @@ from sys import argv
 import bottle
 from bottle import default_app, request, route, response, get, static_file
 
+global_dict = {}
 
 import tweepy
 
@@ -36,8 +37,8 @@ class TwitterAPI:
 
 #if __name__ == "__main__":
 
-@get('/info/freq_words')
-def freq_words():
+@get('/info/prep')
+def preparation_freq_words():
     twitter = TwitterAPI().api
     #twitter.tweet("Hello world!") #You probably want to remove this line
     public_tweets = twitter.home_timeline(count=200, page=1)
@@ -82,8 +83,12 @@ def freq_words():
 #    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1), reverse=True):
 #        temp = k + ":" + str(v) + "###"
 #        ret_str += temp
+    global_dict = wordcount_diff
+
+@get('/info/freq_words')
+def freq_words():
 	response.content_type = 'application/json'
-    return wordcount_diff
+	return global_dict
 
 @route('/static/<filename>')
 def server_static(filename):
