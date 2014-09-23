@@ -10,7 +10,7 @@ from sys import argv
 import bottle
 from bottle import default_app, request, route, response, get, static_file
 
-global_dict = {}
+import redis
 
 import tweepy
 
@@ -78,7 +78,8 @@ def preparation_freq_words():
                 found = True
         if not found:
             wordcount_diff[k] = v
-
+    for k, v in wordcount_diff:
+    	redis.zadd("freq_word", k, v)
 #    ret_str = ""
 #    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1), reverse=True):
 #        temp = k + ":" + str(v) + "###"
@@ -88,7 +89,9 @@ def preparation_freq_words():
 @get('/info/freq_words')
 def freq_words():
 	response.content_type = 'application/json'
-	return global_dict
+	freq_words = redis.zrange("freg_word", 0, -1, withscores=True)
+	dict_freq_words = dict(zip(freq_words))
+	return dict_freq_words
 
 @route('/static/<filename>')
 def server_static(filename):
