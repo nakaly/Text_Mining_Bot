@@ -93,8 +93,7 @@ def preparation_freq_words():
 def freq_words():
 	response.content_type = 'application/json'
 	dict_freq_words = {}
-    redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
-#    redis_db = redis.from_url(redis_url)
+	redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 	freq_words = redis_db.zrange("freg_word", 0, -1, withscores=True)
 	dict_freq_words = dict(zip(freq_words))
 	return dict_freq_words
