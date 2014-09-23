@@ -83,7 +83,7 @@ def preparation_freq_words():
     redis_db = redis.from_url(redis_url)
 
     for k, v in wordcount_diff.iteritems:
-    	redis_db.zadd("freq_word", k, v)
+    	redis_db.zadd("freq_word", k, int(v))
 #    ret_str = ""
 #    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1), reverse=True):
 #        temp = k + ":" + str(v) + "###"
