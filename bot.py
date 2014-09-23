@@ -78,12 +78,12 @@ def freq_words():
         if not found:
             wordcount_diff[k] = v
 
-    ret_str = ""
-    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1), reverse=True):
-        temp = k + ":" + str(v) + "###"
-        ret_str += temp
-
-    return ret_str
+#    ret_str = ""
+#    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1), reverse=True):
+#        temp = k + ":" + str(v) + "###"
+#        ret_str += temp
+	response.content_type = 'application/json'
+    return wordcount_diff
 
 @route('/static/<filename>')
 def server_static(filename):
