@@ -16,10 +16,8 @@ body {
 var max_id = 0;
 var count = 5;
 var req = new XMLHttpRequest();
-req_url = "http://text-mining-bot.herokuapp.com/info/freq_words?id=" + max_id + "&count=" + count
-req.open("get", req_url, false)
-req.send()
-var data = eval('(' + req.responseText + ')');
+var req_url
+var data
 $(function() {
     $(window).bottom({proximity: 0.05});
     $(window).on('bottom', function() {
@@ -29,9 +27,14 @@ $(function() {
             $('#image').html('<div>'+'loading...'+'</div>');
             setTimeout(function() {
                 $('#image').html('');
+                req_url = "http://text-mining-bot.herokuapp.com/info/freq_words?id=" + max_id + "&count=" + count
+                req.open("get", req_url, false)
+                req.send()
+                data = eval('(' + req.responseText + ')');
                 for (var i in data) {
                     $('#wrap div:last').append('<div> key:'+ i + ', value:' + data[i] +'</div>');
                 }
+                max_id = max_id + count
 //                for (i=0; i<20; i++, number++) {
 //                   $('#wrap div:last').append('<div>'+dummy+number+'</div>');
 //              }
