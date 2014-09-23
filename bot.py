@@ -87,6 +87,6 @@ def freq_words():
 
 @route('/')
 def index():
-    return static_file(index.html, root='./static/') 
+    return static_file('index.html', root='./static/') 
 
 bottle.run(host='0.0.0.0', port=argv[1])
