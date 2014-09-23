@@ -78,10 +78,11 @@ def preparation_freq_words():
                 found = True
         if not found:
             wordcount_diff[k] = v
+
     redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
     redis = redis.from_url(redis_url)
 
-    for k, v in wordcount_diff:
+    for k, v in wordcount_diff.iteritems:
     	redis.zadd("freq_word", k, v)
 #    ret_str = ""
 #    for k, v in sorted(wordcount_diff.iteritems(), key=itemgetter(1), reverse=True):
