@@ -19,8 +19,8 @@ var req = new XMLHttpRequest();
 var req_url
 var data
 $(function() {
-    $(window).bottom({proximity: 0.05});
-    $(window).on('bottom', function() {
+    $("#wrap").bottom({proximity: 0.05});
+    $("#wrap").on('bottom', function() {
         var obj = $(this);
         if (!obj.data('loading')) {
             obj.data('loading', true);
