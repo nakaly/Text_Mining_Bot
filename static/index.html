@@ -24,20 +24,17 @@ $(function() {
         var obj = $(this);
         if (!obj.data('loading')) {
             obj.data('loading', true);
-            $('#image').html('<div>'+'loading...'+'</div>');
+            $('#wrap div:last').append('loading....')
             setTimeout(function() {
-                $('#image').html('');
                 req_url = "http://text-mining-bot.herokuapp.com/info/freq_words?id=" + max_id + "&count=" + count
                 req.open("get", req_url, false)
                 req.send()
                 data = eval('(' + req.responseText + ')');
+                $('#wrap div:last').remove();
                 for (var i in data) {
                     $('#wrap div:last').append('<div> key:'+ i + ', value:' + data[i] +'</div>');
                 }
                 max_id = max_id + count
-//                for (i=0; i<20; i++, number++) {
-//                   $('#wrap div:last').append('<div>'+dummy+number+'</div>');
-//              }
                 obj.data('loading', false);
             }, 3000);
         }
