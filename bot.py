@@ -8,7 +8,7 @@ import sys
 from sys import argv
 
 import bottle
-from bottle import default_app, request, route, response, get, static_file
+from bottle import default_app, request, route, response, get, static_file, redirect
 
 import redis
 
@@ -35,7 +35,6 @@ class TwitterAPI:
         """Send a tweet"""
         self.api.update_status(message)
 
-#if __name__ == "__main__":
 
 @get('/info/prep')
 def preparation_freq_words():
@@ -104,5 +103,10 @@ def freq_words():
 @route('/static/<filename>')
 def server_static(filename):
     return static_file(filename, root='./static/') 
+
+@route('/')
+def index():
+    preparation_freq_words()
+    redirect("/static/index.html")
 
 bottle.run(host='0.0.0.0', port=argv[1])
