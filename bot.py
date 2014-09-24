@@ -36,7 +36,7 @@ class TwitterAPI:
         self.api.update_status(message)
 
 
-@get('/info/prep')
+#@get('/info/prep')
 def preparation_freq_words():
     twitter = TwitterAPI().api
     #twitter.tweet("Hello world!") #You probably want to remove this line
