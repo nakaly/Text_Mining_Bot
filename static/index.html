@@ -19,6 +19,14 @@ var req = new XMLHttpRequest();
 var req_url
 var data
 $(function() {
+    req_url = "http://text-mining-bot.herokuapp.com/info/freq_words?id=" + max_id + "&count=" + count
+    req.open("get", req_url, false)
+    req.send()
+    data = eval('(' + req.responseText + ')');
+    for (var i in data) {
+        $('#wrap div:last').append('<div> key:'+ i + ', value:' + data[i] +'</div>');
+    }
+    max_id = max_id + count
     $("#wrap").bottom({proximity: 0.05});
     $("#wrap").on('bottom', function() {
         var obj = $(this);
@@ -43,21 +51,12 @@ $(function() {
 });
 </script>
 	<style type="text/css">
-		#wrap { border: 1px solid #000; width: 400px; height: 150px; overflow: auto }
+		#wrap { border: 1px solid #000; width: 400px; height: 100px; overflow: auto }
 	</style>
 
 <h1>jQuery Bottom Plugin Demo</h1>
 <p>New entries will be added when you scroll to the bottom</p>
 <div id="wrap">
-    <div>word list</div>
-    <div>word list</div>
-    <div>word list</div>
-    <div>word list</div>
-    <div>word list</div>
-    <div>word list</div>
-    <div>word list</div>
-    <div>word list</div>
-    <div>word list</div>
     <div>word list</div>
 </div>
 <div id="image"></div>
